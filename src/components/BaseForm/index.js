@@ -6,16 +6,32 @@ class FilterForm extends React.Component {
     initFormList = () => {
         const { getFieldDecorator } = this.props.form;
         const { formList } = this.props;
-        console.log(formList);
+        const formItemList = [];
         if (formList && formList.length > 0) {
             formList.forEach((item, index) => {
-                console.log(item);
                 let label = item.label;
                 let field = item.field;
                 let initValue = item.initialValue || '';
                 let placeholder = item.placeholder;
                 let width = item.width;
-                if (item.type == 'INPUT') {
+                if (item.type == '时间查询') {
+                    const begin_time = <Form.Item label={label} key={field} >
+                        {getFieldDecorator('begin_time', {
+                            
+                        })(
+                            <DatePicker placeholder={placeholder} showTime={true} format='YYYY-MM-DD' />
+                        )}
+                    </Form.Item>
+                    formItemList.push(begin_time);
+                    const end_time = <Form.Item label='~' colon={false} key={field} >
+                    {getFieldDecorator('end_time', {
+                        
+                    })(
+                        <DatePicker placeholder={placeholder} showTime={true} format='YYYY-MM-DD' />
+                    )}
+                </Form.Item>
+                    formItemList.push(end_time);
+                } else if (item.type == 'INPUT') {
                     const INPUT = <Form.Item label={label} key={field} >
                         {getFieldDecorator([field], {
                             initialValue: initValue
@@ -23,7 +39,7 @@ class FilterForm extends React.Component {
                             <Input placeholder={placeholder} type='text' />
                         )}
                     </Form.Item>
-                    formList.push(INPUT);
+                    formItemList.push(INPUT);
                 } else if (item.type == 'SELECT') {
                     const SELECT = <Form.Item label={label} key={field} >
                         {getFieldDecorator([field], {
@@ -34,7 +50,7 @@ class FilterForm extends React.Component {
                             </Select>
                         )}
                     </Form.Item>
-                    formList.push(SELECT);
+                    formItemList.push(SELECT);
                 } else if (item.type == 'CHECKBOX') {
                     const CHECKBOX = <Form.Item label={label} key={field} >
                         {getFieldDecorator([field], {
@@ -46,19 +62,29 @@ class FilterForm extends React.Component {
                             </Checkbox>
                         )}
                     </Form.Item>
-                    formList.push(CHECKBOX);
+                    formItemList.push(CHECKBOX);
+                }else if (item.type == 'datepicker') {
+                    const datepicker = <Form.Item label={label} key={field} >
+                        {getFieldDecorator([field], {
+                            initialValue: initValue,
+                        })(
+                            <DatePicker placeholder={placeholder} showTime={true} format='YYYY-MM-DD' />
+                   
+                        )}
+                    </Form.Item>
+                    formItemList.push(datepicker);
                 }
             });
 
         }
-        return formList;
+        return formItemList;
     }
     handleFilterSubmit = () => {
         let fieldsValue = this.props.form.getFieldsValue();
         this.props.filterSubmit(fieldsValue);
     }
     reset = () => {
-
+        this.props.form.resetFields();
     }
     render() {
 

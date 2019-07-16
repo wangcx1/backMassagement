@@ -30,7 +30,8 @@ export default class Order extends React.Component {
             ]
         },
         {
-            type: '时间查询'
+            type: '时间查询',
+            key: 'time'
         },
         {
             type: 'SELECT',
@@ -51,29 +52,29 @@ export default class Order extends React.Component {
     }
     requestList = () => {
         let _this = this;
-        axios.ajax({
-            url: '/order/list',
-            data: {
-                params: {
-                    page: this.params.page
-                }
-            }
-        }).then((res) => {
-            console.log(res);
-            if (res.code == 0) {
-                let items = res.result.item_list.map((item, index) => {
-                    item.key = index;
-                    return item;
-                });
-                this.setState({
-                    list: items,
-                    pagination: Utils.pagination(res, (current) => {
-                        _this.params.page = current;
-                        _this.requestList();
-                    })
-                })
-            }
-        })
+        axios.requestLists( '/order/list',this.params,_this,true)
+        // axios.ajax({
+        //     url: '/order/list',
+        //     data: {
+        //         params: this.params
+        //     }
+
+        // }).then((res) => {
+        //     console.log(res);
+        //     if (res.code == 0) {
+        //         let items = res.result.item_list.map((item, index) => {
+        //             item.key = index;
+        //             return item;
+        //         });
+        //         this.setState({
+        //             list: items,
+        //             pagination: Utils.pagination(res, (current) => {
+        //                 _this.params.page = current;
+        //                 _this.requestList();
+        //             })
+        //         })
+        //     }
+        // })
     }
     // 订单详情
     orderDetail = () => {

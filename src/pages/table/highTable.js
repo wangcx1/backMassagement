@@ -234,7 +234,7 @@ const data = [
 data.map((item, index) => {
     item.key = index;
 });
-console.log(data)
+
 export default class HighTable extends React.Component {
     constructor() {
         super();

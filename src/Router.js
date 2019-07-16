@@ -19,7 +19,15 @@ import HighTable from './pages/table/highTable';
 import City from './pages/city';
 import Order from './pages/order';
 import Common from './common';
-import OrderDetail from './pages/order/order'
+import OrderDetail from './pages/order/order';
+import User from './pages/user';
+import BikeMap from './pages/map/bikeMap';
+import Bar from './pages/echarts/bar';
+import Pie from './pages/echarts/pie';
+import Line from './pages/echarts/line';
+import Rich from './pages/rich';
+// import PerimmsionUser from './pages/permission';
+import PermissionUser from './pages/permission';
 export default class Routers extends React.Component {
     render() {
         return (
@@ -50,6 +58,13 @@ export default class Routers extends React.Component {
                                 <Route path='/table/high' component={HighTable} />
                                 <Route path='/city' component={City} />
                                 <Route path='/order' component={Order} />
+                                <Route path='/user' component={User} />
+                                <Route path='/bikeMap' component={BikeMap} />
+                                <Route path='/charts/bar' component={Bar} />
+                                <Route path='/charts/pie' component={Pie} />
+                                <Route path='/charts/line' component={Line} />
+                                <Route path='/rich' component={Rich} />
+                                <Route path='/permission' component={PermissionUser} />
                                 <Route component={NoMacth} />
                             </Switch>
                         </Admin>

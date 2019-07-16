@@ -2,8 +2,9 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import './index.less'
 import Util from '../../utils/utils'
-import axios from '../../axios'
-export default class Header extends React.Component {
+import axios from '../../axios';
+import { connect } from 'react-redux';
+class Header extends React.Component {
     constructor() {
         super();
         this.state = ({
@@ -23,7 +24,7 @@ export default class Header extends React.Component {
     getWeatherAPIdata() {
         let city = '上海'
         axios.jsonp({ url: 'http://api.map.baidu.com/telematics/v3/weather?location=' + encodeURIComponent(city) + '&output=json&ak=3p49MVra6urFRGOT9s8UBWr2' }).then((res) => {
-            console.log(res);
+
             if (res.status == 'success') {
                 let data = res.results[0].weather_data[0];
                 this.setState({
@@ -54,7 +55,7 @@ export default class Header extends React.Component {
                     menuType ? '' :
                         <Row className='breadcrub'>
                             <Col span={4} className='breadTitle'>
-                                首页
+                               {this.props.menuName}
                    </Col>
                             <Col span={20} className='weather'>
                                 <span className='date'>{this.state.sysTime}</span>
@@ -69,3 +70,10 @@ export default class Header extends React.Component {
         )
     }
 }
+const mapStateToProps = state => {
+    console.log(state)
+    return {
+        menuName: state.menuName
+    }
+}
+export default connect(mapStateToProps)(Header);

@@ -100,7 +100,6 @@ const data = [
 data.map((item, index) => {
     item.key = index;
 });
-console.log(data)
 export default class BasicTable extends React.Component {
     constructor() {
         super();

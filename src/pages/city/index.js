@@ -26,7 +26,8 @@ export default class City extends React.Component {
             data: {
                 params: {
                     page: this.params.page
-                }
+                },
+                isShowLoading:false
             }
         }).then((res) => {
             this.setState({
@@ -49,7 +50,6 @@ export default class City extends React.Component {
     //城市开通提交
     handleSubmit = () => {
         let cityInfo = this.cityForm.props.form.getFieldsValue();
-        console.log(cityInfo);
         axios.ajax({
             url: '/city/open',
             data: {
