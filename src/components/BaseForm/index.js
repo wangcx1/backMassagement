@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Select, Form, Button, Checkbox, Readio, DatePicker } from 'antd'
+import { Input, Select, Form, Button, Checkbox, Radio, DatePicker } from 'antd'
 import Utils from '../../utils/utils'
 const Option = Select.Option;
 class FilterForm extends React.Component {
@@ -11,7 +11,7 @@ class FilterForm extends React.Component {
             formList.forEach((item, index) => {
                 let label = item.label;
                 let field = item.field;
-                let initValue = item.initialValue || '';
+                let initialValue = item.initialValue || '';
                 let placeholder = item.placeholder;
                 let width = item.width;
                 if (item.type == '时间查询') {
@@ -34,7 +34,7 @@ class FilterForm extends React.Component {
                 } else if (item.type == 'INPUT') {
                     const INPUT = <Form.Item label={label} key={field} >
                         {getFieldDecorator([field], {
-                            initialValue: initValue
+                            initialValue: initialValue
                         })(
                             <Input placeholder={placeholder} type='text' />
                         )}
@@ -43,7 +43,7 @@ class FilterForm extends React.Component {
                 } else if (item.type == 'SELECT') {
                     const SELECT = <Form.Item label={label} key={field} >
                         {getFieldDecorator([field], {
-                            initialValue: initValue
+                            initialValue: initialValue
                         })(
                             <Select style={{ width: width }} placeholder={placeholder}>
                                 {Utils.getOptionList(item.list)}
@@ -54,7 +54,7 @@ class FilterForm extends React.Component {
                 } else if (item.type == 'CHECKBOX') {
                     const CHECKBOX = <Form.Item label={label} key={field} >
                         {getFieldDecorator([field], {
-                            initialValue: initValue,
+                            initialValue: initialValue,
                             valuePropName: 'checked'
                         })(
                             <Checkbox>
@@ -66,7 +66,7 @@ class FilterForm extends React.Component {
                 }else if (item.type == 'datepicker') {
                     const datepicker = <Form.Item label={label} key={field} >
                         {getFieldDecorator([field], {
-                            initialValue: initValue,
+                            initialValue: initialValue,
                         })(
                             <DatePicker placeholder={placeholder} showTime={true} format='YYYY-MM-DD' />
                    

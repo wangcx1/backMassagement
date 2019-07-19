@@ -104,7 +104,8 @@ export default class ETable extends React.Component {
                 item.bordered = true;
             });
         }
-        const { selectedRowKeys } = this.props;
+        const selectedRowKeys  = this.props.selectedRowKeys;
+        console.log(selectedRowKeys);
         const rowSelection = {
             type: 'radio',
             selectedRowKeys,

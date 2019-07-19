@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Modal } from 'antd';
 import Utils from '../utils/utils'
 export default class Axios {
-    static requestLists(url,params,_this,isMock) {
+    static requestLists(url, params, _this, isMock) {
         var data = {
             params,
             isMock,
@@ -12,13 +12,12 @@ export default class Axios {
             url,
             data,
         }).then((data) => {
-          
+
             if (data && data.result) {
                 let list = data.result.item_list.map((item, index) => {
                     item.key = index;
                     return item;
                 });
-                console.log(list)
                 _this.setState({
                     list,
                     pagination: Utils.pagination(data, (current) => {
@@ -53,13 +52,13 @@ export default class Axios {
             loading = document.getElementById('ajaxLoading');
             loading.style.display = 'block';
         }
-        
+
         return new Promise((resolve, reject) => {
-            let baseApi='https://easy-mock.com/mock/5cf86f5ab2ab287d7f9cd0cb/mockapi';
-            if(options.data.isMock){
-                 baseApi = 'https://easy-mock.com/mock/5cf86f5ab2ab287d7f9cd0cb/mockapi';
-            }else{
-                baseApi='https://easy-mock.com/mock/5cf86f5ab2ab287d7f9cd0cb/mockapi';
+            let baseApi = 'https://easy-mock.com/mock/5cf86f5ab2ab287d7f9cd0cb/mockapi';
+            if (options.data.isMock) {
+                baseApi = 'https://easy-mock.com/mock/5cf86f5ab2ab287d7f9cd0cb/mockapi';
+            } else {
+                baseApi = 'https://easy-mock.com/mock/5cf86f5ab2ab287d7f9cd0cb/mockapi';
             }
             axios({
                 url: options.url,

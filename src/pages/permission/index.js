@@ -352,7 +352,6 @@ class PermEditForm extends React.Component {
 PermEditForm = Form.create({})(PermEditForm)
 class RoleAuthForm extends React.Component {
     handleChange = (targetKeys, direction, moveKeys) => {
-        console.log(targetKeys, direction, moveKeys);
         this.props.pathUserInfo(targetKeys);
     };
     render() {
@@ -372,7 +371,7 @@ class RoleAuthForm extends React.Component {
                 <Form.Item label='选择用户' {...formItemLayout}>
                     <Transfer dataSource={mockData}
                         titles={['待选用户', '已选用户']}
-                        searchPlaceholder='请输入用户名'
+                        locale={{searchPlaceholder:'请输入用户名'}}
                         showSearch
                         filterOption={this.filterOption}
                         onSearch={this.handleSearch}

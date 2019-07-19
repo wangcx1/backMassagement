@@ -55,8 +55,8 @@ class Header extends React.Component {
                     menuType ? '' :
                         <Row className='breadcrub'>
                             <Col span={4} className='breadTitle'>
-                               {this.props.menuName}
-                   </Col>
+                                {this.props.menuName}
+                            </Col>
                             <Col span={20} className='weather'>
                                 <span className='date'>{this.state.sysTime}</span>
                                 <span className='weather-detail'>{this.state.weather}</span>
@@ -71,7 +71,6 @@ class Header extends React.Component {
     }
 }
 const mapStateToProps = state => {
-    console.log(state)
     return {
         menuName: state.menuName
     }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu, Icon } from 'antd';
 import './index.less';
 import { connect } from 'react-redux';
-import switchMenu  from '../../redux/action/index';
+import { switchMenu } from '../../redux/action/index';
 import MenuConfig from '../../config/menuConfig';
 import { NavLink } from 'react-router-dom';
 const SubMenu = Menu.SubMenu;
@@ -12,9 +12,8 @@ class NavLeft extends React.Component {
         let currentKey = window.location.hash.replace(/#|\?.*$/g, '');
         this.setState({ menuTreeNode, currentKey })
     }
-    handleClick = ({item,key}) => {
+    handleClick = ({ item, key }) => {
         const { dispatch } = this.props;
-        console.log(item.props.title);
         dispatch(switchMenu(item.props.title));
         this.setState({
             currentKey: key

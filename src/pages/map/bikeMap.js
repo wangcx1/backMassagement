@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, Form } from 'antd';
 import axios from '../../axios'
 import BaseForm from '../../components/BaseForm';
-import { throwStatement } from '@babel/types';
 export default class BikeMap extends React.Component {
     constructor() {
         super();
@@ -17,7 +16,7 @@ export default class BikeMap extends React.Component {
             placeholder: '全部',
             initialValue: '0',
             width: 100,
-            list: [{ id: '0', name: '全部' }, { id: '1', name: '北京' }, { id: '2', name: '上海' }, { id: '3', name: '天津' }, { id: '4', name: '杭州' }]
+            list: [{ id: '0', name: '全部' ,key:'all'}, { id: '1', name: '北京',key:'beijing' }, { id: '2', name: '上海',key:'shanghai' }, { id: '3', name: '天津',key:'tianjin' }, { id: '4', name: '杭州' ,key:'hangzhou'}]
         },
         {
             type: '时间查询',
@@ -30,7 +29,7 @@ export default class BikeMap extends React.Component {
             placeholder: '全部',
             initialValue: '0',
             width: 100,
-            list: [{ id: '0', name: '全部' }, { id: '1', name: '进行中' }, { id: '2', name: '行程结束' }]
+            list: [{ id: '0', name: '全部',key:'all' }, { id: '1', name: '进行中',key:'in' }, { id: '2', name: '行程结束',key:'out' }]
         }
     ];
     requestList = () => {

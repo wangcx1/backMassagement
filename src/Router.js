@@ -28,6 +28,7 @@ import Line from './pages/echarts/line';
 import Rich from './pages/rich';
 // import PerimmsionUser from './pages/permission';
 import PermissionUser from './pages/permission';
+import Home from './pages/home';
 export default class Routers extends React.Component {
     render() {
         return (
@@ -65,6 +66,7 @@ export default class Routers extends React.Component {
                                 <Route path='/charts/line' component={Line} />
                                 <Route path='/rich' component={Rich} />
                                 <Route path='/permission' component={PermissionUser} />
+                                <Route path='/home' component={Home}/>
                                 <Route component={NoMacth} />
                             </Switch>
                         </Admin>
