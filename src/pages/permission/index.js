@@ -205,7 +205,9 @@ export default class PermissionUser extends React.Component {
                     onCancel={() => {
                         this.RoleForm.props.form.resetFields()
                         this.setState({
-                            isVisable: false
+                            isVisable: false,
+                            selectedItem:null,
+                            selectedRowKeys:null
                         })
                     }}
                 >
@@ -218,7 +220,9 @@ export default class PermissionUser extends React.Component {
                     onOk={this.handlePermissionSubmit}
                     onCancel={() => {
                         this.setState({
-                            isPermissiionVisable: false
+                            isPermissiionVisable: false,
+                            selectedItem:null,
+                            selectedRowKeys:null
                         })
                     }}
                 >
@@ -238,7 +242,9 @@ export default class PermissionUser extends React.Component {
                     onOk={this.handleAuthSubmit}
                     onCancel={() => {
                         this.setState({
-                            isUserVisiable: false
+                            isUserVisiable: false,
+                            selectedItem:null,
+                            selectedRowKeys:null
                         })
                     }}
                     width={800}

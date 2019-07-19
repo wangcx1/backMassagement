@@ -55,7 +55,6 @@ export default class User extends React.Component {
     }
     handleOperator = (type) => {
         let item = this.state.selectedItem;
-        const selectedRowKeys = this.state.selectedRowKeys;
         if (type == 'create') {
             this.setState({
                 type,
@@ -118,7 +117,8 @@ export default class User extends React.Component {
                         if (res.code == 0) {
                             _this.setState({
                                 isVisible: false,
-                                selectedRowKeys: null
+                                selectedRowKeys: null,
+                                selectedItem:null
                             })
                             _this.requestList();
 
@@ -132,7 +132,6 @@ export default class User extends React.Component {
     handleSubmit = () => {
         let type = this.state.type;
         let data = this.UserForm.props.form.getFieldsValue();
-        const selectedRowKeys=this.state.selectedRowKeys;
         axios.ajax({
             url: type == 'create' ? '/user/add' : '/user/edit',
             data: {
@@ -239,7 +238,9 @@ export default class User extends React.Component {
                 <Modal title={this.state.title} visible={this.state.isVisible}
                     onOk={this.handleSubmit} onCancel={() => {
                         this.setState({
-                            isVisible: false
+                            isVisible: false,
+                            selectedRowKeys: null,
+                            selectedItem:null
                         })
                     }} width={600} {...footer}>
                     <UserForm type={this.state.type} userInfo={this.state.userInfo} wrappedComponentRef={(form) => { this.UserForm = form }} />
